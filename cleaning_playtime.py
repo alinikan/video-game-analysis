@@ -1,0 +1,48 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import re
+
+from scipy.stats import stats
+
+
+def clean_playtime_data(df):
+    # Drop rows of purchase record to keep only play time
+    df_origin = df[df['type'] == 'play']
+
+    # Drop the last column as it does not contain any data rather than 0
+    # Also drop the type column as it does not contain any useful info anymore after filtering
+    df_origin = df_origin.drop(['0', 'type'], axis=1)
+
+    df_origin_0_5 = df_origin[(df_origin['time'] >= 0) & (df_origin['time'] <= 5)]
+    df_origin_5_20 = df_origin[(df_origin['time'] > 5) & (df_origin['time'] <= 20)]
+    df_origin_20_100 = df_origin[(df_origin['time'] > 20) & (df_origin['time'] <= 100)]
+    df_origin_above_100 = df_origin[df_origin['time'] > 100]
+
+    # Calculate Z-score to remove outliers that is 4 std away from the mean of the data
+    z_origin = stats.zscore(df_origin['time'])
+    outlier_rm_data = df_origin[np.abs(z_origin) <= 4]
+
+    # Group play time data on video games, and take the average of player's play time.
+    df_grouped = outlier_rm_data.groupby('name')
+    group_sizes = df_origin.groupby('name').size()
+    df_averaged = df_grouped.mean()
+    df_averaged = df_averaged[group_sizes >= 10]
+
+    # Plot the average play time of games
+    df_averaged['time'].plot(kind='hist', bins=200, logy=True)
+    plt.title('Average Play time vs Game Amount (Sample > 10)')
+    plt.xlabel('Average Play Time')
+    plt.ylabel('Number of Games')
+    plt.subplots_adjust(bottom=0.1)
+    plt.savefig('outputs/AvgPlaytimeOutlier.png')
+
+    # Focus on the first 200 hrs
+    zoomed_df = df_averaged[df_averaged['time'] < 30]
+    zoomed_df.plot(kind='hist', bins=200, logy=True)
+    plt.xlabel('Average Play Time')
+    plt.ylabel('Number of Games')
+    plt.title('Zoomed Plot in 200 Hours')
+    plt.subplots_adjust(bottom=0.1)
+    plt.savefig('outputs/ZoomedAvgPlaytimeOutlier.png')
+

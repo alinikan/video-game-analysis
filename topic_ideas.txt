@@ -1,0 +1,31 @@
+1. acquiring/cleaning the data;
+Ali
+    Remove NaN values.
+    Clean up soundtrack, dlcs.
+
+Parsaie
+    foreign characters, emojis.
+    Outlier price.
+
+DSY
+    Games with no rating.
+    discount price>origin.
+    remove some features.
+
+    // description text extraction.
+
+2. defining/refining the problem;
+    1- Are less games getting made year by year? (number of games for each year —> somehow use tags/descriptions)
+
+    2- Relationship of tags, descriptions, etc. with ratings/success of the games
+
+    3- What genre (action, shooting, RPG, etc.) are the most popular?
+
+3. data analysis;
+
+4. how well you explained the whole thing.
+
+
+
+
+
