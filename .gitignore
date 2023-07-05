@@ -7,7 +7,7 @@ Desktop.ini
 ._*
 Thumbs.db
 .idea/
-outputs
+/outputs/
 
 # Files that might appear on external disks
 .Spotlight-V100
@@ -68,3 +68,4 @@ docs/_build/
 
 # Python cache
 __pycache__/
+
