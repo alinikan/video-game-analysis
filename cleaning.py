@@ -5,7 +5,7 @@ import re
 
 free_price_pattern = re.compile(r'(F|f)ree')
 numerical_price_pattern = re.compile(r'\$(\d+(\.\d(\d)?)?)')
-only_english_characters_number_pattern = re.compile(r'^[a-zA-Z0-9-]+$')
+only_valid_characters_number_pattern = re.compile(r'^[a-zA-Z\s!"$&\'()*+,-.:?_~]+$')
 
 
 def filter_prices_games(price):
@@ -28,7 +28,7 @@ def filter_prices_games(price):
 
 def filter_non_valid_game_names(name):
     name = str(name)
-    matches = only_english_characters_number_pattern.search(name)
+    matches = only_valid_characters_number_pattern.search(name)
     if matches:
         return name # The game name has no non english or invalid characters such as emojies
     else:
