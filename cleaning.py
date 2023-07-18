@@ -3,10 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import re
 
-# TODO: I'll remove those later
-
 free_price_pattern = re.compile(r'(F|f)ree')
 numerical_price_pattern = re.compile(r'\$(\d+(\.\d(\d)?)?)')
+only_english_characters_number_pattern = re.compile(r'^[a-zA-Z0-9-]+$')
 
 
 def filter_prices_games(price):
@@ -26,6 +25,14 @@ def filter_prices_games(price):
         # we'll return None for those games
         return None
 
+
+def filter_non_valid_game_names(name):
+    name = str(name)
+    matches = only_english_characters_number_pattern.search(name)
+    if matches:
+        return name # The game name has no non english or invalid characters such as emojies
+    else:
+        return None # if the game
 
 # END
 def clean_data(df):
@@ -61,6 +68,11 @@ def clean_data(df):
     df = df[df['original_price'] <= 250]
     # plt.boxplot(df['original_price'].values)
     # plt.show()
+
+    # Filter the games that have non english names or invalid names such as emojies
+    df['name'] = df['name'].apply(filter_non_valid_game_names)
+    df = df[df['name'].notnull()]
+
 
     # Save the cleaned DataFrame to a new CSV file
     df.to_csv("data/cleaned_steam_games.csv", index=False)
