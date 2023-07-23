@@ -40,3 +40,6 @@ def clean_playtime_data(df):
     plt.title('Zoomed Plot in 200 Hours')
     plt.subplots_adjust(bottom=0.1)
     plt.savefig('outputs/ZoomedAvgPlaytimeOutlier.png')
+
+    # Save the cleaned DataFrame to a new CSV file
+    df.to_csv("data/cleaned_playtime.csv", index=False)

@@ -25,9 +25,12 @@ def main():
 
     df_cleaned = pd.read_csv("data/cleaned_steam_games.csv")
 
-    df2_column_names = ["name", "type", "time", "0"]
-    df2 = pd.read_csv("data/steam-200k.csv", names=df2_column_names)
-    df2_cleaned = clean_playtime_data(df2)
+    # Read and clean the second df
+    playtime_column_names = ["name", "type", "time", "0"]
+    playtime = pd.read_csv("data/steam-200k.csv", names=playtime_column_names)
+    clean_playtime_data(playtime)
+
+    playtime_cleaned = pd.read_csv("data/cleaned_playtime.csv")
 
 
 if __name__ == "__main__":

@@ -30,9 +30,10 @@ def filter_non_valid_game_names(name):
     name = str(name)
     matches = only_valid_characters_number_pattern.search(name)
     if matches:
-        return name # The game name has no non english or invalid characters such as emojies
+        return name  # The game name has no non english or invalid characters such as emojies
     else:
-        return None # if the game
+        return None  # if the game
+
 
 # END
 def clean_data(df):
@@ -72,7 +73,6 @@ def clean_data(df):
     # Filter the games that have non english names or invalid names such as emojies
     df['name'] = df['name'].apply(filter_non_valid_game_names)
     df = df[df['name'].notnull()]
-
 
     # Save the cleaned DataFrame to a new CSV file
     df.to_csv("data/cleaned_steam_games.csv", index=False)
