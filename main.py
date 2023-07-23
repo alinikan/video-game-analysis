@@ -36,8 +36,6 @@ def main():
     combined_data = add_playtime_to_steam_data(df_cleaned, playtime_cleaned)
     combined_data.to_csv("data/combined.csv", index=False)
 
-    print(combined_data)
-
 
 if __name__ == "__main__":
     main()
