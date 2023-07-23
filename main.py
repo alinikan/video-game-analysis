@@ -29,5 +29,6 @@ def main():
     df2 = pd.read_csv("data/steam-200k.csv", names=df2_column_names)
     df2_cleaned = clean_playtime_data(df2)
 
+
 if __name__ == "__main__":
     main()
