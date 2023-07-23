@@ -68,5 +68,3 @@ docs/_build/
 
 # Python cache
 __pycache__/
-
-/outputs/
