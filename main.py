@@ -7,6 +7,7 @@ import os
 from cleaning import clean_data
 from analyze_origin import analyze_origin_data
 from cleaning_playtime import clean_playtime_data
+from combine_data import add_playtime_to_steam_data
 
 sns.set_palette('pastel')
 plt.style.use('ggplot')
@@ -31,6 +32,12 @@ def main():
     clean_playtime_data(playtime)
 
     playtime_cleaned = pd.read_csv("data/cleaned_playtime.csv")
+
+    combined_data = add_playtime_to_steam_data(df_cleaned, playtime_cleaned)
+    combined_data.to_csv("data/combined.csv", index=False)
+
+    print(combined_data)
+
 
 if __name__ == "__main__":
     main()
