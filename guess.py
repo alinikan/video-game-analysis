@@ -37,10 +37,3 @@ df = pd.read_csv('data/cleaned_steam_games.csv')
 # Preprocess the 'name' column
 # Convert all names to lower case and remove any leading or trailing spaces
 df['name'] = df['name'].str.lower().str.strip()
-
-# Call the find_game function and print the result
-game = find_game(df)
-if game:
-    print(f"Found the game: {game}")
-else:
-    print("Sorry, I couldn't find the game you're looking for.")
