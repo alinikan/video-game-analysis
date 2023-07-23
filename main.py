@@ -32,6 +32,5 @@ def main():
 
     playtime_cleaned = pd.read_csv("data/cleaned_playtime.csv")
 
-
 if __name__ == "__main__":
     main()
