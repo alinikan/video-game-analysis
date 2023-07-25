@@ -8,6 +8,10 @@ numerical_price_pattern = re.compile(r'\$(\d+(\.\d(\d)?)?)')
 only_valid_characters_number_pattern = re.compile(r'^[a-zA-Z\s!"$&\'()*+,-.:?_~]+$')
 
 
+def trim_features(df):
+    return df.drop(columns=['url', 'types', 'recent_reviews'])
+
+
 def filter_prices_games(price):
     price = str(price)
 
@@ -30,9 +34,10 @@ def filter_non_valid_game_names(name):
     name = str(name)
     matches = only_valid_characters_number_pattern.search(name)
     if matches:
-        return name # The game name has no non english or invalid characters such as emojies
+        return name  # The game name has no non english or invalid characters such as emojies
     else:
-        return None # if the game
+        return None  # if the game
+
 
 # END
 def clean_data(df):
@@ -73,6 +78,7 @@ def clean_data(df):
     df['name'] = df['name'].apply(filter_non_valid_game_names)
     df = df[df['name'].notnull()]
 
+    df = trim_features(df)
 
     # Save the cleaned DataFrame to a new CSV file
     df.to_csv("data/cleaned_steam_games.csv", index=False)

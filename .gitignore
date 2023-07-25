@@ -8,7 +8,7 @@ Desktop.ini
 Thumbs.db
 .idea/
 /outputs/
-
+**/__pycache__/
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
@@ -68,4 +68,3 @@ docs/_build/
 
 # Python cache
 __pycache__/
-

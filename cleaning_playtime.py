@@ -23,6 +23,9 @@ def clean_playtime_data(df):
     df_averaged = df_grouped.mean()
     df_averaged = df_averaged[group_sizes >= 10]
 
+    # Save the cleaned DataFrame to a new CSV file
+    df_averaged.to_csv("data/cleaned_playtime.csv")
+
     # Plot the average play time of games
     plt.clf()
     df_averaged['time'].plot(kind='hist', bins=200, logy=True)
