@@ -23,6 +23,12 @@ def preprocess_features(df):
     return df
 
 
+def google_search_link(game_name):
+    base_url = "https://www.google.com/search?q="
+    search_query = game_name.replace(" ", "+")  # replace spaces with '+'
+    return base_url + search_query
+
+
 # Function to get the index of a game given its name
 def get_index_from_name(name):
     return df[df['name'] == name].index[0]
@@ -64,7 +70,10 @@ def recommend_games_with_explanation(game_name, num_recommendations=5):
         # Find the common features between the input game and the recommended game
         common_features = input_game_features.intersection(recommended_game_features)
         # Create an explanation for the recommendation
-        explanation = f"{recommended_game} is recommended because it has the following common features with {game_name}: {', '.join(common_features)}"
+        explanation = (
+            f"{recommended_game} is recommended because it has the following common features with {game_name}:\n"
+            f"{', '.join(common_features)}.\n"
+            f"Learn more about it here: {google_search_link(recommended_game)}")
         # Append the recommendation and explanation to the list
         recommendations_with_explanations.append((recommended_game, explanation))
 
@@ -101,13 +110,12 @@ nn_model.fit(df_encoded)
 # Call the find_game function and print the result
 game = find_game(df)
 if game:
-    print(f"Found the game: {game}")
-    # If the game is found, recommend games and print the result
+    print(f"\n--- Found the game: {game.upper()} ---\n")
     recommendations = recommend_games_with_explanation(game, num_recommendations=5)
     for game, explanation in recommendations:
-        print(game)
-        print(explanation)
-        print()
+        print(f"\n--- Recommended Game: {game.upper()} ---")
+        print(f"\n{explanation}\n")
+        print(f"{'-' * 50}\n")  # print a separator line
 else:
     # If the game is not found, print an error message
     print("Sorry, I couldn't find the game you're looking for.")
