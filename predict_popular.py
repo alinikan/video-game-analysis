@@ -58,6 +58,15 @@ def one_hot_encoding(combined_data):
     return combined_data
 
 
+def parse_date(date_string):
+    for fmt in ('%b %d, %Y', '%b %Y'):
+        try:
+            return pd.to_datetime(date_string, format=fmt)
+        except ValueError:
+            continue
+    raise ValueError(f'{date_string} is not in the format')
+
+
 def preprocess(combined_data):
     # remove the columns that are not necessary for predicting game rating
     combined_data = combined_data[
@@ -73,7 +82,8 @@ def preprocess(combined_data):
     # combined_data = combined_data[combined_data['average_playtime'].notna()]
 
     # Extract release year column
-    combined_data['release_date'] = pd.to_datetime(combined_data['release_date'])
+    combined_data['release_date'] = combined_data['release_date'].apply(parse_date)
+    # combined_data['release_date'] = pd.to_datetime(combined_data['release_date'])
     combined_data['release_year'] = combined_data['release_date'].dt.year.astype(str)
     combined_data['release_month'] = combined_data['release_date'].dt.month.astype(str)
 
@@ -230,6 +240,7 @@ def predict_game_rating(combined_data):
     print("Train Accuracy:", model.score(X_train, y_train))
     print("Validation Accuracy:", model.score(X_valid, y_valid))
 
+
 # def predict_pos_reviews(combined_data):
 #     X = combined_data.drop(['name', 'all_reviews', 'languages', 'game_details', 'positive_reviews'], axis=1,
 #                            inplace=False).values
@@ -256,4 +267,3 @@ def predict():
     combined_data = preprocess(combined_data)
 
     predict_game_rating(combined_data)
-
