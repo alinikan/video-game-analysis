@@ -57,6 +57,7 @@ The script will then guide you through the process. It will first ask you what y
 
 If you choose to get a game recommendation, you will be prompted to enter the name of a game. The script will then recommend games that are similar to the game you entered.
 
-If you choose to train a Machine Learning model for game popularity prediction, the script will show you a prediction of the game's popularity based on its characteristics.
+If you choose to train a Machine Learning model for game popularity prediction, the script will train and show you the scores of a model that can predict a game's popularity based on its characteristics.
+Note that the GridsearchCV hyperparameter tuning can be turned on by changing the constant ``ENABLE_PARAM_TUNING`` to true in ``predict_popular.py``.
 
 If you choose to analyze the original data, the script will show you some visualizations of the data (in the outputs folder), and will also show you some other information about the data.
