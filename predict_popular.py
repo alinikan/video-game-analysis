@@ -179,7 +179,7 @@ def predict_game_rating(combined_data):
                            axis=1, inplace=False)
     X = X.values
     y = combined_data['popularity'].values
-    print("Label portions: \n", combined_data['popularity'].value_counts(normalize=True))
+    # print("Label portions: \n", combined_data['popularity'].value_counts(normalize=True))
 
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, random_state=30)
     class_weights = dict(1 / combined_data['popularity'].value_counts(normalize=True))
