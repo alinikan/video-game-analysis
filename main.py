@@ -37,7 +37,7 @@ def main():
     while True:
         print("\nWhat do you want to do?")
         print("1. Get a game recommendation.")
-        print("2. Predict a game's popularity.")
+        print("2. Train a ML model for game popularity prediction.")
         print("3. Analyze the original data.")
         print("4. Exit.")
 

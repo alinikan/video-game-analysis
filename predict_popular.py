@@ -73,7 +73,7 @@ def preprocess(combined_data):
     # combined_data = combined_data[combined_data['average_playtime'].notna()]
 
     # Extract release year column
-    combined_data['release_date'] = pd.to_datetime(combined_data['release_date'], format='mixed')
+    combined_data['release_date'] = pd.to_datetime(combined_data['release_date'])
     combined_data['release_year'] = combined_data['release_date'].dt.year.astype(str)
     combined_data['release_month'] = combined_data['release_date'].dt.month.astype(str)
 
@@ -227,9 +227,8 @@ def predict_game_rating(combined_data):
     f1 = f1_score(y_valid, y_pred, average='macro')  # Calculate the F1 score
 
     print("f1-macro", f1)
-    print("Train Score:", model.score(X_train, y_train))
-    print("Validation Score:", model.score(X_valid, y_valid))
-
+    print("Train Accuracy:", model.score(X_train, y_train))
+    print("Validation Accuracy:", model.score(X_valid, y_valid))
 
 # def predict_pos_reviews(combined_data):
 #     X = combined_data.drop(['name', 'all_reviews', 'languages', 'game_details', 'positive_reviews'], axis=1,
@@ -257,6 +256,4 @@ def predict():
     combined_data = preprocess(combined_data)
 
     predict_game_rating(combined_data)
-
-    combined_data.to_csv('data/remove_this_shit.csv')
 
