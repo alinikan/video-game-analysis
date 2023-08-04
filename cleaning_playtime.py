@@ -34,12 +34,13 @@ def clean_playtime_data(df):
     plt.ylabel('Number of Games')
     plt.savefig('outputs/AvgPlaytimeOutlier.png')
 
-    # Focus on the first 200 hrs
+    # Focus on the first 30 hrs
     plt.clf()
     zoomed_df = df_averaged[df_averaged['time'] < 30]
-    zoomed_df.plot(kind='hist', bins=200, logy=True)
+    counts, bins, patches = plt.hist(zoomed_df['time'], bins=80, log=True, alpha=0.5)
+    plt.plot(bins[:-1], counts, color='red')
     plt.xlabel('Average Play Time')
     plt.ylabel('Number of Games')
-    plt.title('Zoomed Plot in 200 Hours')
+    plt.title('Zoomed Plot in 30 Hours')
     plt.subplots_adjust(bottom=0.1)
     plt.savefig('outputs/ZoomedAvgPlaytimeOutlier.png')
