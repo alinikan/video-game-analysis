@@ -61,3 +61,8 @@ If you choose to train a Machine Learning model for game popularity prediction, 
 Note that the GridsearchCV hyperparameter tuning can be turned on by changing the constant ``ENABLE_PARAM_TUNING`` to true in ``predict_popular.py``.
 
 If you choose to analyze the original data, the script will show you some visualizations of the data (in the outputs folder), and will also show you some other information about the data.
+
+## Contributors
+- [Dingshuo Yang](https://github.com/HarukaYang)
+- [Ali Nikan](https://github.com/alinikan)
+- [Mohammad Parsaei](https://github.com/M-Parsaei)
