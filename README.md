@@ -1,13 +1,13 @@
 # Steam Game Popularity Predictor and Game Recommender
 
 ## Table of Contents
-- [Introduction](#Introduction)
-- [Packages Used](#Packages-Used)
-- [Installation and Setup](#Installation-and-Setup)
-- [Structure of the Project](#Structure-of-the-Project)
-- [Cloning This Repository](#Cloning-This-Repository)
-- [How to Run the Project](#How-to-Run-the-Project)
-- [Contributors](#Contributors)
+- [Introduction](#introduction)
+- [Packages Used](#packages-used)
+- [Installation and Setup](#installation-and-setup)
+- [Structure of the Project](#structure-of-the-project)
+- [Cloning This Repository](#cloning-this-repository)
+- [How to Run the Project](#how-to-run-the-project)
+- [Contributors](#contributors)
 
 ## Introduction
 This project is designed to provide two primary services:
