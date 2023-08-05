@@ -39,7 +39,7 @@ pip install matplotlib
 pip install fuzzywuzzy
 pip install python-Levenshtein
 ```
-After installing Python and the necessary libraries, clone the project repository to your local machine (see [Cloning This Repository](#Cloning-This-Repository) for more information).
+After installing Python and the necessary libraries, clone the project repository to your local machine (see [Cloning This Repository](#cloning-this-repository) for more information).
 
 ## Structure of the Project
 This project is structured as follows:
