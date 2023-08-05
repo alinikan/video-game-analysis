@@ -5,7 +5,9 @@
 - [Packages Used](#Packages-Used)
 - [Installation and Setup](#Installation-and-Setup)
 - [Structure of the Project](#Structure-of-the-Project)
+- [Cloning This Repository](#Cloning-This-Repository)
 - [How to Run the Project](#How-to-Run-the-Project)
+- [Contributors](#Contributors)
 
 ## Introduction
 This project is designed to provide two primary services:
@@ -37,7 +39,7 @@ pip install matplotlib
 pip install fuzzywuzzy
 pip install python-Levenshtein
 ```
-After installing Python and the necessary libraries, clone the project repository to your local machine.
+After installing Python and the necessary libraries, clone the project repository to your local machine (see [Cloning This Repository](#Cloning-This-Repository) for more information).
 
 ## Structure of the Project
 This project is structured as follows:
