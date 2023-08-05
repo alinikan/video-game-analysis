@@ -55,6 +55,7 @@ This repository contains large files and uses [Git Large File Storage (LFS)](htt
 
 Follow these steps:
 1. Install Git LFS. This only needs to be done once per machine:
+
 For macOS, use Homebrew:
 ```bash
 brew install git-lfs
