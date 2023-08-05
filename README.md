@@ -61,7 +61,9 @@ For macOS, use Homebrew:
 brew install git-lfs
 ```
 For Windows, download the installer from the [Git LFS GitHub page](https://git-lfs.com).
+
 For Linux, the process depends on the specific distribution.
+
 2. Set up Git LFS for your user account. This also only needs to be done once:
 ```bash
 git lfs install
